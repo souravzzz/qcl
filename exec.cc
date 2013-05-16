@@ -306,7 +306,7 @@ void sReturn::exec(SymTable *loc,SymTable *gl,QuHeap *qh) {
 }
 
 void sInput::exec(SymTable *loc,SymTable *gl,QuHeap *qh) {
-  int n,e;
+  int n;
   tReal x,y;
   tValue v;
   tValue *p;
@@ -324,7 +324,6 @@ void sInput::exec(SymTable *loc,SymTable *gl,QuHeap *qh) {
   }
   m+=" ";
   while(1) {
-    e=0;
     s=qclinput("? "+m)+"\n";
     switch(pvar->basetype()) {
       case tINTEGER:
@@ -475,7 +474,7 @@ void sPlot::exec(SymTable *loc,SymTable *gl,QuHeap *qh) {
     q2=v2.qustate();
     l2=pexpr2->prtstr()+sdec(q2->mapbits()," (%ld qubits)");
   }
-  if(q1 && v1.isEmpty() || q2 && v2.isEmpty())
+  if((q1 && v1.isEmpty()) || (q2 && v2.isEmpty()))
     throw tError(errINVPAR,"cannot plot register of lenght zero",this);
   if(q2) {
     plot_spectrum2(q1,q2,l1,l2);

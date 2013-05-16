@@ -408,7 +408,7 @@ void sPlot::typecheck(SymTable *loc,SymTable *gl) {
   TRACE();
   CHECK(pexpr1);
   CHECK(pexpr2);
-  if(pexpr1 && !pexpr1->type().isQuExpr() || pexpr2 && !pexpr2->type().isQuExpr())
+  if((pexpr1 && !pexpr1->type().isQuExpr()) || (pexpr2 && !pexpr2->type().isQuExpr()))
     throw tError(errINVTYP,"quantum expression required",this);
 }
 
@@ -500,7 +500,7 @@ void sSubscript::typecheck(SymTable *loc,SymTable *gl) {
   tType t=pvar->type();
   if(!t.isQuExpr() && !t.ord() && !t.isQuCond()) 
     throw tError(errINVTYP,"subscript on integral type",this);
-  if(t.ord() && nargs()!=t.ord() || !t.ord() && nargs()!=1)
+  if((t.ord() && nargs()!=t.ord()) || (!t.ord() && nargs()!=1))
     throw tError(errINVTYP,"invalid number of indices",this);    
   for_plist(p,psubs,c) {                                        
     if(!p->type().isInt())                                      
@@ -622,8 +622,8 @@ void sBinOp::typecheck(SymTable *loc,SymTable *gl) {
     case sNOTEQ:
     case sEQUAL:
       if(t1.isQuExpr() || t2.isQuExpr()) {
-        if(!t1.isQuExpr() && !t1.isInt() ||
-           !t2.isQuExpr() && !t2.isInt()) 
+        if((!t1.isQuExpr() && !t1.isInt()) ||
+           (!t2.isQuExpr() && !t2.isInt()))
           throw tError(errINVTYP,"invalid quantum condition",this); 
         settype(tType(tQUCOND));
         break;

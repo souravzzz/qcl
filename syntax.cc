@@ -50,7 +50,7 @@ void sRoutDef::invoke(SymTable *loc,SymTable *gl,QuHeap *qh,int inv) {
   
   if(optCheck) {
     for_plist(p,args(),c) {
-      if(!inv && p->type().isQuVoid() || p->type().isQuScr()) {
+      if((!inv && p->type().isQuVoid()) || (p->type().isQuScr())) {
         pv=loc->getRef(p->id());
 	if(!pv || !pv->isQuExpr()) 
 	  throw tError(errINT,"invalid quantum parameter",this);
@@ -154,7 +154,7 @@ void sRoutDef::invoke(SymTable *loc,SymTable *gl,QuHeap *qh,int inv) {
   if(optCheck) {
     term t;
     for_plist(p,args(),c) {
-      if(inv && p->type().isQuVoid() || p->type().isQuScr()) {
+      if((inv && p->type().isQuVoid()) || (p->type().isQuScr())) {
         pv=loc->getRef(p->id());
 	if(!pv || !pv->isQuExpr())
           throw tError(errINT,"temporary register not found",this);

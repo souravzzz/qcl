@@ -44,7 +44,7 @@ string regstr(const bitvec& v,int width=0) {
   char s[v.length()+3];
   char *p=s;
 
-  if((optDumpFormat=='a'||optDumpFormat=='d') && v.length()>BPW || optDumpFormat=='x') {
+  if(((optDumpFormat=='a'||optDumpFormat=='d') && v.length()>BPW) || optDumpFormat=='x') {
     *(p++)='0'; *(p++)='x';
     for(i=((v.length()-1) & ~3);i>=0;i-=4) {
       c=v.getword(i,(i+4<=v.length()) ? 4 : (v.length()-i));

@@ -262,7 +262,7 @@ public:
   int isError() const { return _type==tERROR; }
   int isUndef() const { return _type==tUNDEF; }
   int isConv(const tType& t) const {
-    if(_type==t._type || isQuExpr() && t.isQuExpr()) return 1;
+    if(_type==t._type || (isQuExpr() && t.isQuExpr())) return 1;
     if(isBoolean() && t.isQuCond()) return 1;
     if(ord()!=t.ord()) return 0;
     return basetype()>=tINTEGER && basetype()<t.basetype() &&
