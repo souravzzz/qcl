@@ -11,3 +11,10 @@
 *.lai
 *.la
 *.a
+
+# Custom Files & Directories
+lex.cc
+yacc.h
+yacc.cc
+.depend
+qcl
