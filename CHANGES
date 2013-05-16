@@ -1,3 +1,13 @@
+Changes in 0.6.3:
+ * This is a minor bugfix release to fix the emulation of the conditional swap gate (Fredkin gate). Thanks to Jaroslaw Miszczak for spotting this bug.
+
+Changes in 0.6.2:
+ * This is mostly a maintenance release to catch up with the ever changing GNU C++ standards. No new functionality was added.
+ * Code cleanups to make gcc 4.1 happy
+ * Binary distribution for AMD64 plattform
+ * Output defaults to decimal for <= 64 qubits
+ * Minor changes in the Makefile
+
 Changes in 0.6.1:
  * Fixed -x option bug
  * new option --qcluserdir, --include-path renamed to --qcldir
