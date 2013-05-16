@@ -16,7 +16,7 @@ warranty of merchantability or fitness for any particular purpose.
 #ifndef PARSE_H
 #define PARSE_H
 
-#include <stdio.h>
+#include <cstdio>
 #include <list>
 extern char *yytext;
 #define YYNEW(o) (yyTest ? 0 : new o)

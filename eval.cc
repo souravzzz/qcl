@@ -19,8 +19,8 @@ warranty of merchantability or fitness for any particular purpose.
 #include "debug.h"
 #include "options.h"
 
-#include <stdlib.h>
-#include <math.h>
+#include <cstdlib>
+#include <cmath>
 
 #define TRACE() if (optTrace) qcltrace("EVAL",this,loc,gl,qh)
 

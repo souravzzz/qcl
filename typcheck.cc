@@ -19,7 +19,7 @@ warranty of merchantability or fitness for any particular purpose.
 #include "error.h"
 #include "options.h"
 
-#include <stdlib.h>
+#include <cstdlib>
 
 #define TRACE() if (optTrace) qcltrace("TYPECHECK",this,loc,gl,0)
 

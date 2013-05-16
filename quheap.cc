@@ -19,8 +19,7 @@ warranty of merchantability or fitness for any particular purpose.
 #include "error.h"
 
 #include <sstream>
-
-#include <stdio.h>
+#include <cstdio>
 
 int isStateModified=1;
 

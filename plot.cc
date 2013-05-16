@@ -49,12 +49,12 @@ void open_plot() {
       if(plotfile) delete plotfile;
       throw tError(errIO,"cannot open plot-file "+optDumpFilename);
     }
-    plotter=new PSPlotter(cin,*plotfile,cerr);
+    plotter=new PSPlotter(std::cin,*plotfile,std::cerr);
   } else if(optTeXmacs) {
-    plotter=new PSPlotter(cin,cout,cerr);
-    cout << format->ps_beg;
+    plotter=new PSPlotter(std::cin,std::cout,std::cerr);
+    std::cout << format->ps_beg;
   } else {
-    plotter=new XPlotter(cin,cout,cerr);
+    plotter=new XPlotter(std::cin,std::cout,std::cerr);
   }
   if(!plotter || plotter->openpl()<0) {
     if(plotter) delete plotter;
@@ -75,7 +75,7 @@ void close_plot() {
     delete plotter;
   }
   if(plotfile) delete plotfile;
-  if(optTeXmacs && optPlotFilename=="") cout << format->ps_end;
+  if(optTeXmacs && optPlotFilename=="") std::cout << format->ps_end;
   if(r<0) throw tError(errINT,"cannot close plotter object");
 }
 

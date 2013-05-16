@@ -21,7 +21,7 @@ warranty of merchantability or fitness for any particular purpose.
 #include "options.h"
 #include "debug.h"
 
-#include <stdio.h>
+#include <cstdio>
 #include <unistd.h>
 #include <getopt.h>
 

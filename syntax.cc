@@ -15,8 +15,8 @@ warranty of merchantability or fitness for any particular purpose.
 
 #pragma implementation
 
-#include <stdlib.h>
-#include <stdio.h>
+#include <cstdlib>
+#include <cstdio>
 
 #include "syntax.h"
 #include "error.h"

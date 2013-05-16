@@ -20,8 +20,8 @@ warranty of merchantability or fitness for any particular purpose.
 #include "options.h"
 #include "error.h"
 
-#include <math.h>
-#include <stdio.h>
+#include <cmath>
+#include <cstdio>
 
 #ifdef QCL_DEBUG
 int n_object=0;

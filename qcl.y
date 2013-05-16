@@ -15,7 +15,7 @@ warranty of merchantability or fitness for any particular purpose.
 ************************************************************************/
 
 
-#include <stdlib.h>
+#include <cstdlib>
 #include "syntax.h"
 #include "parse.h"
 

@@ -17,8 +17,8 @@ warranty of merchantability or fitness for any particular purpose.
 
 
 #ifdef QCL_USE_READLINE
-#include <stdlib.h>
-#include <stdio.h>
+#include <cstdlib>
+#include <cstdio>
 extern "C" {
 #include <readline/readline.h>
 #include <readline/history.h>
@@ -50,7 +50,7 @@ const char *ERROR_STR[] = {
 };
 
 void qclerror(string e) {
-  cout << format->error_beg << e << format->error_end;
+  std::cout << format->error_beg << e << format->error_end;
   if(optLogfile) {
     *optLogfile << "! " << e << '\n';
   }
@@ -70,7 +70,7 @@ void qclabort(string e) {
     qcl_delete(optLogfile);
     optLogfile=0;
   }
-  cout << format->output_end;
+  std::cout << format->output_end;
   exit(1);
 }
 
@@ -86,13 +86,13 @@ string qclinput(string p) {
   irqOff();
   if(optTeXmacs) {
     char c;
-    cout << prompt << format->output_end  << flush;
-    while(cin.get(c) && c!='\n') t+=c;
-    if(!cin.eof()) t+='\n';
+    std::cout << prompt << format->output_end  << std::flush;
+    while(std::cin.get(c) && c!='\n') t+=c;
+    if(!std::cin.eof()) t+='\n';
   } else {
 #ifdef QCL_USE_READLINE
     char *l;
-    cout << format->output_end << flush;
+    std::cout << format->output_end << std::flush;
     l=readline(prompt.c_str());
     if(l) {
       t=l; t+='\n';
@@ -104,45 +104,45 @@ string qclinput(string p) {
     }
 #else
     char c;
-    cout << prompt << format->output_end << flush;
-    while(cin.get(c) && c!='\n') t+=c;
-    if(!cin.eof()) t+='\n';
+    std::cout << prompt << format->output_end << std::flush;
+    while(std::cin.get(c) && c!='\n') t+=c;
+    if(!std::cin.eof()) t+='\n';
 #endif
   }
   if(optIRQ) irqOn();
-  cout << format->output_beg;
+  std::cout << format->output_beg;
   return t;
 }
   
 void qcloutput(string s) {
-  cout << s << flush;
+  std::cout << s << std::flush;
 }  
 
 void qclprint(string s) {
-  cout << format->print_beg << s << format->print_end << flush;
+  std::cout << format->print_beg << s << format->print_end << std::flush;
 }  
 
 void qclmessage(string s) {
-  cout << format->msg_beg << s << format->msg_end << flush;
+  std::cout << format->msg_beg << s << format->msg_end << std::flush;
 }
 
 void qcllog(string s) {
-  if(optLogfile) *optLogfile << s << flush;
+  if(optLogfile) *optLogfile << s << std::flush;
 }
 
 void qcltrace(string s,sObject *obj,SymTable *loc,SymTable *gl,QuHeap *qh) {
-  cerr << s;
+  std::cerr << s;
   if(obj) { 
-    cerr << " Object " << obj->objstr();
+    std::cerr << " Object " << obj->objstr();
     if(obj->def())
-      cerr << " (" << obj->defstr() << ")";
-    if(obj->isExpr()) cerr << " type " << ((sExpr*)obj)->type().str();
-    cerr << "\n";
+      std::cerr << " (" << obj->defstr() << ")";
+    if(obj->isExpr()) std::cerr << " type " << ((sExpr*)obj)->type().str();
+    std::cerr << "\n";
   }
-  if(obj) cerr << "  line:  " << obj->prtstr() << "\n";
-//if(gl) cerr << "  global:" << gl->prtstr() << "\n";
-  if(loc)  cerr << "  local: " << loc->prtstr() << "\n";
-  if(qh) cerr << "  quheap:" << qh->prtstr() << "\n";
+  if(obj) std::cerr << "  line:  " << obj->prtstr() << "\n";
+//if(gl) std::cerr << "  global:" << gl->prtstr() << "\n";
+  if(loc)  std::cerr << "  local: " << loc->prtstr() << "\n";
+  if(qh) std::cerr << "  quheap:" << qh->prtstr() << "\n";
 }
 
 tError::tError(ErrType t,string s,sObject *o) {

@@ -13,9 +13,9 @@ warranty of merchantability or fitness for any particular purpose.
 ************************************************************************/
 
 
-#include <stdio.h>
-#include <time.h>
-#include <string.h>
+#include <cstdio>
+#include <ctime>
+#include <cstring>
 
 #include "options.h"
 #include "error.h"
@@ -78,47 +78,47 @@ struct option qcl_options[]={
 const OutputFormat *format=&FormatPlain;
 
 void printusage(char *name) {
-  cerr << "USAGE: " << name << " [options] [file] ...\n";
-  cerr << "QCL interpeter and quantum computer simulator\n\n";
-  cerr << "Startup Options:\n";
-  cerr << "-h, --help                      display this message\n";
-  cerr << "-V, --version                   display version information\n";
-  cerr << "-i, --interactive               force interactive mode\n";
-  cerr << "-x, --exec<commands>            execute <commands> on startup\n";
-  cerr << "-q, --quiet                     skip startup message\n";
-  cerr << "--color                         color xterm interface\n";
-  cerr << "--light-color                   color xterm interface for black background\n";
-  cerr << "--texmacs                       TeXmacs interface (experimental)\n";
-  cerr << "-n, --no-default-include        don't read " << DEF_STD_INCLUDE << " on startup\n";
-  cerr << "-o, --logfile                   specify a logfile\n";
-  cerr << "-b, --bits=n:                   set number of qubits (" << 8*sizeof(int) <<")\n";
-  cerr << "Dynamic Options (can be changed with the set statement):\n";
-  cerr << "-s, --seed=<seed-value>         set random seed value (system time)\n";
-  cerr << "-I, --qcldir=<path>             QCL system include path (" DEF_INCLUDE_PATH ")\n";
-  cerr << "-U, --qcluserdir=<path>         QCL user include path ($HOME/.qcl)\n";
-  cerr << "--library=<y|n>                 ignore redefinitions of existing symbols (n)\n";
-  cerr << "-d, --dump-file=<file>          send output of dump-command to <file> (none)\n";
-  cerr << "-p, --plot-file=<file>          Postscript file created by plot-command (none)\n";
-  cerr << "-f, --dump-format=x,d,b         list base vectors as hex, decimal or binary (d)\n";
-  cerr << "-r, --show-regs=<y|n>           show global registers in dumped states (y)\n";
-  cerr << "-D, --dump-precision=<digits>   shown digits in dumped states (5)\n";
-  cerr << "-P, --precision=<digits>        shown digits for real and complex values (6)\n";
-  cerr << "-Z, --trunc-zeros=<y|n>         truncate zeros for real and complex values (y)\n";
-  cerr << "-T, --truc-states=<y|n>         truncate non-allocated qubits (y)\n";
-  cerr << "--plot-paper=<format>           Set paper-format for Postscript output (b5)\n";
-  cerr << "--plot-size=<pixel>             Set maximum window size for X11 plots (600)\n";
-  cerr << "-Q, --qureg-mask=<y|n>          list registers as masks instead of lists (n)\n";
-  cerr << "-g, --debug=<y|n>               open debug-shell on error (n)\n";
-  cerr << "-a, --auto-dump=<max>           dump states up to max terms in shell mode (8)\n"; 
-  cerr << "-l, --log==<y|n>                log external operator calls (n)\n";
-  cerr << "-L, --log-state==<y|n>          log state after each transformation (n)\n";
-  cerr << "-c, --check==<y|n>              check consistency of quantum heap (n)\n";
-  cerr << "--trace==<y|n>                  trace mode (very verbose) (n)\n";
-  cerr << "-S, --syntax=<y|n>              check only the syntax, no interpretation (n)\n";
-  cerr << "-E, --echo=<y|n>                echo parsed input (n)\n";
-  cerr << "-t, --test=<y|n>                test programm, ignore quantum operations (n)\n";
-  cerr << "-e, --shell-escape=<y|n>        honor shell-escapes (y)\n";
-  cerr << "--irq=<y|n>                     allow user interrupts if supported (y)\n";
+  std::cerr << "USAGE: " << name << " [options] [file] ...\n";
+  std::cerr << "QCL interpeter and quantum computer simulator\n\n";
+  std::cerr << "Startup Options:\n";
+  std::cerr << "-h, --help                      display this message\n";
+  std::cerr << "-V, --version                   display version information\n";
+  std::cerr << "-i, --interactive               force interactive mode\n";
+  std::cerr << "-x, --exec<commands>            execute <commands> on startup\n";
+  std::cerr << "-q, --quiet                     skip startup message\n";
+  std::cerr << "--color                         color xterm interface\n";
+  std::cerr << "--light-color                   color xterm interface for black background\n";
+  std::cerr << "--texmacs                       TeXmacs interface (experimental)\n";
+  std::cerr << "-n, --no-default-include        don't read " << DEF_STD_INCLUDE << " on startup\n";
+  std::cerr << "-o, --logfile                   specify a logfile\n";
+  std::cerr << "-b, --bits=n:                   set number of qubits (" << 8*sizeof(int) <<")\n";
+  std::cerr << "Dynamic Options (can be changed with the set statement):\n";
+  std::cerr << "-s, --seed=<seed-value>         set random seed value (system time)\n";
+  std::cerr << "-I, --qcldir=<path>             QCL system include path (" DEF_INCLUDE_PATH ")\n";
+  std::cerr << "-U, --qcluserdir=<path>         QCL user include path ($HOME/.qcl)\n";
+  std::cerr << "--library=<y|n>                 ignore redefinitions of existing symbols (n)\n";
+  std::cerr << "-d, --dump-file=<file>          send output of dump-command to <file> (none)\n";
+  std::cerr << "-p, --plot-file=<file>          Postscript file created by plot-command (none)\n";
+  std::cerr << "-f, --dump-format=x,d,b         list base vectors as hex, decimal or binary (d)\n";
+  std::cerr << "-r, --show-regs=<y|n>           show global registers in dumped states (y)\n";
+  std::cerr << "-D, --dump-precision=<digits>   shown digits in dumped states (5)\n";
+  std::cerr << "-P, --precision=<digits>        shown digits for real and complex values (6)\n";
+  std::cerr << "-Z, --trunc-zeros=<y|n>         truncate zeros for real and complex values (y)\n";
+  std::cerr << "-T, --truc-states=<y|n>         truncate non-allocated qubits (y)\n";
+  std::cerr << "--plot-paper=<format>           Set paper-format for Postscript output (b5)\n";
+  std::cerr << "--plot-size=<pixel>             Set maximum window size for X11 plots (600)\n";
+  std::cerr << "-Q, --qureg-mask=<y|n>          list registers as masks instead of lists (n)\n";
+  std::cerr << "-g, --debug=<y|n>               open debug-shell on error (n)\n";
+  std::cerr << "-a, --auto-dump=<max>           dump states up to max terms in shell mode (8)\n"; 
+  std::cerr << "-l, --log==<y|n>                log external operator calls (n)\n";
+  std::cerr << "-L, --log-state==<y|n>          log state after each transformation (n)\n";
+  std::cerr << "-c, --check==<y|n>              check consistency of quantum heap (n)\n";
+  std::cerr << "--trace==<y|n>                  trace mode (very verbose) (n)\n";
+  std::cerr << "-S, --syntax=<y|n>              check only the syntax, no interpretation (n)\n";
+  std::cerr << "-E, --echo=<y|n>                echo parsed input (n)\n";
+  std::cerr << "-t, --test=<y|n>                test programm, ignore quantum operations (n)\n";
+  std::cerr << "-e, --shell-escape=<y|n>        honor shell-escapes (y)\n";
+  std::cerr << "--irq=<y|n>                     allow user interrupts if supported (y)\n";
 }
 
 int optInteractive=0;
@@ -236,7 +236,7 @@ void parseopt(int argc,char **argv) {
       switch(c) {
         case 'h': printusage(argv[0]);
                   exit(0);
-        case 'V': cerr << VERSION << ", " << COPYRIGHT << "\n" << DISCLAIMER << "\n";
+        case 'V': std::cerr << VERSION << ", " << COPYRIGHT << "\n" << DISCLAIMER << "\n";
                   exit(0);
         case 'i': optInteractive=1;       break;
         case 'q': optQuiet=1;       break;
@@ -272,7 +272,7 @@ void parseopt(int argc,char **argv) {
       }
     }
   } catch(tError e) {
-    cout << format->output_beg;
+    std::cout << format->output_beg;
     qclabort(e);
   }
   if(argc==optind && optExec=="") optInteractive=1;
