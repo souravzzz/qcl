@@ -1,5 +1,6 @@
-QCL version 0.6.3 by Bernhard Oemer <oemer@tph.tuwien.ac.at>
-============================================================
+QCL version 0.6.3
+=================
+Bernhard Oemer <oemer@tph.tuwien.ac.at>
 
 
 Despite many common concepts with classical computer science, quantum
