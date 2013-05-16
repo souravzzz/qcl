@@ -44,7 +44,7 @@ string safestring(const char *s) {
   return t;
 }
 
-int yyerror(char* s) {
+void yyerror(const char* s) {
   string t;
   if(!yyStringBufferActive) {
     t+="in "+yyFilename+", line "+sdec(yylineno)+", ";
@@ -52,7 +52,6 @@ int yyerror(char* s) {
   t+="near \""+safestring(yytext)+"\"";
   qclerror(t);
   qclerror(s);
-  return 1;
 }
 
 FILE* openqclfile(string fname) {

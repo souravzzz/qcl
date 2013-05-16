@@ -124,7 +124,7 @@ void sRoutDef::typecheck(SymTable *loc,SymTable *gl) {
   if(isExtern()) {
     pext=0;
     for(i=0;ExtRoutTable[i].rout;i++) {
-      if(id()==string(ExtRoutTable[i].id)) {
+      if(id()==ExtRoutTable[i].id) {
         pext=ExtRoutTable[i].rout;
         break;
       }

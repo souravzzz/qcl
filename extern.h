@@ -18,6 +18,7 @@ warranty of merchantability or fitness for any particular purpose.
 
 #pragma interface
 
+#include <string>
 #include "types.h"
 
 /*
@@ -29,7 +30,7 @@ public:
 
 struct RoutTableEntry {
   tExtRout *rout;
-  char *id;
+  std::string id;
 };
 
 extern RoutTableEntry ExtRoutTable[];
